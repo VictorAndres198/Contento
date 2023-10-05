@@ -1,18 +1,19 @@
 import React from "react";
 import { TypeAnimation } from 'react-type-animation';
+import doctor from './img/doctor.svg'
 import Home2 from './Home2'
 import Home3 from './Home3'
-import doctor from './img/fdoctor.svg'
+import Home4 from "./Home4"
 
 
 
 export default function Home(){
     return(
         <section>
-        <div className="grid md:grid-cols-2 bg-gradient-to-r from-blue-700 to-sky-700 rounded-3xl md:mx-auto m-7 max-w-screen-xl">
+        <div className="grid md:grid-cols-2 bg-gradient-to-r from-blue-700 to-sky-700 rounded-3xl md:mx-auto m-7 max-w-screen-xl pt-10">
         <div className="text-white lg:py-6 lg:px-4 lg:mt-7 lg:mb-7 mt-5">
             <div className="w-full h-full mx-auto text-left flex flex-col justify-center md:pl-12 pl-4">
-                <img src={doctor} alt='doctor' className='mx-auto h-56 md:hidden' />
+                
                 <p className="font-bold">Contento</p>
                 <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6">Contento</h1>
                 <div>
@@ -32,8 +33,11 @@ export default function Home(){
                         />
                     <p className="md:text-2xl text-xl font-bold text-slate-800">asdasdasd</p>
                     <div className="flex justify-center md:pr-12 pr-4">
-                    <button className="bg-gradient-to-l from-pink-500 to-yellow-500 rounded-3xl p-3 font-medium my-6 mx-auto md:px-12 px-6 text-white hover:bg-gradient-to-l hover:from-pink-600 hover:to-yellow-600 hover:shadow-lg hover:shadow-yellow-600/50 hover:scale-110 transition ease-in-out duration-500 hover:-translate-y-1 delay-150">Get Started</button>
+                    <button className="bg-gradient-to-l from-pink-500 to-yellow-500 rounded-3xl p-3 font-medium my-6 mx-auto md:px-12 px-6 text-white 
+                    hover:bg-gradient-to-l hover:from-pink-600 hover:to-yellow-600 hover:shadow-lg hover:shadow-yellow-600/50 hover:scale-110 
+                    transition ease-in-out duration-500 hover:-translate-y-1 delay-150">Get Started</button>
                     </div>
+                    <img src={doctor} alt='doctor' className='mx-auto h-72 sm:h-96 md:hidden mb-20 md:mb-0' />
                 </div>
             </div>
         </div>
@@ -42,7 +46,9 @@ export default function Home(){
         </div>
         </div>
         <Home3/>
+        <Home4/>
         <Home2/>
+
         </section>
     );
 }

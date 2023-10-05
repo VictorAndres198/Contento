@@ -4,7 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 export default function Home2(){
     return(
-        <div className="text-cyan-400">
+        <div className="text-cyan-400 max-w-screen-xl mx-auto">
             <div className="w-full h-screen mx-auto text-center flex flex-col justify-center">
                 <p className="font-bold">Contento</p>
                 <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6">Contento</h1>

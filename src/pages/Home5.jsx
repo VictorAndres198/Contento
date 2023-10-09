@@ -3,10 +3,10 @@ import consulta from './img/consulta.svg'
 
 export default function Home4(){
     return(
-        <div className="bg-white border-0 w-full  gap-5 md:gap-0 shadow-lg 
-        flex md:flex-row h-full flex-col mt-4 md:mt-0 max-w-screen-xl md:mx-auto">
+        <div className="bg-transparent border-0 w-full gap-5 md:gap-0
+        flex md:flex-row h-full flex-col mt-4 md:mt-0 max-w-screen-xl md:mx-auto pt-24">
 
-                <div className="bg-white border-0 h-max rounded-3xl text-blue-800 pt-7 w-full md:w-2/4">  
+                <div className="bg-transparent border-0 h-max rounded-3xl text-blue-800 pt-7 w-full md:w-2/4">  
                     <p className="font-bold pl-4 md:pl-12 text-teal-400">QUE ES LO QUE HACEMOS</p>
                     <h1 className="lg:3xl md:text-2xl sm:text-xl text-lg font-bold pl-4 py-4 md:pl-12">Proveemos de... ofrecemos</h1>
                     
@@ -20,7 +20,7 @@ export default function Home4(){
                     </div>
                 </div>
 
-                <div className="border-0 h-full md:max-w-lg w-full items-center mx-auto">
+                <div className="border-0 h-full md:max-w-lg w-full items-center mx-auto -order-1">
                       <img src={consulta} alt='consulta' className='h-full' />
                 </div>
         </div>

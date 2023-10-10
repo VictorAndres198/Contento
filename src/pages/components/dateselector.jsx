@@ -28,6 +28,7 @@ export default function DateSelector() {
         placeholderText="Fecha" 
         showIcon= {CalendarDaysIcon}      
         required
+        autoComplete="off"
       />
       <CalendarDaysIcon className="absolute pointer-events-none h-6 text-gray-900 mt-[2.5px]"/>
     </div>

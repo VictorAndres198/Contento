@@ -33,6 +33,7 @@ export default function TimeSelector() {
         placeholderText="Hora"
         showIcon
         required
+        autoComplete="off"
       />
       <ClockIcon className="absolute h-6 mt-1 text-gray-900"/>
     </div>

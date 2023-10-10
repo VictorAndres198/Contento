@@ -83,7 +83,7 @@ export default function Home3(){
 
 
                     <div className="grid grid-cols-2 justify-center items-center gap-2">
-                        <div className="ml-auto block rounded-md border-0 sm:text-sm sm:leading-6 w-4/5 p-0 m-0 ">
+                        <div className="ml-auto block rounded-md border-0 sm:text-sm sm:leading-6 w-4/5 p-0 m-0">
                             <DateSelector/>
                         </div>
                         <div className=" block rounded-md border-0 sm:text-sm sm:leading-6 w-4/5 p-0 m-0">

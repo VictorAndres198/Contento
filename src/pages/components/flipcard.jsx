@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function FlipCard({buttonText,linkTo,imageSrc,title,description,description2,description3}){
     return(
-    <div className="group w-72 h-72 [perspective:1000px]">
+    <div className="group w-72 h-72">
         <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
             <div className="absolute inset-0 flex justify-center bg-white rounded-xl">
                 <img className="h-full w-fit rounded-xl object-cover shadow-black/40 -order-1" src={imageSrc}/>

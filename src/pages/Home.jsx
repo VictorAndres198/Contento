@@ -95,7 +95,7 @@ export default function Home(){
             boxShadow="none"
         />
         
-        <div className="flex flex-col gap-3 justify-center items-center md:flex-row md:-mt-32 pt-16 md:pt-0">           
+        <div className="flex flex-col gap-3 justify-center items-center md:flex-row md:-mt-32 pt-16 md:pt-0 w-full">           
            <FlipCard
            imageSrc={doctor}
            title="FlipCard1"

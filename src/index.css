@@ -5,3 +5,16 @@
 body{
     background-color: #F4FFFB;
 }
+.stestimonios-container {
+    display: flex;
+    animation: desplazamiento 10s linear infinite; /* 10s es la duración de la animación */
+  }
+  
+  @keyframes desplazamiento {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%); /* Puedes ajustar esto según tus necesidades */
+    }
+  }

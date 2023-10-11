@@ -46,8 +46,6 @@ export default function Home(){
         </div>
         </div>
 
-
-
         <div className="grid grid-cols-1 md:grid-cols-2 w-full 
         max-w-screen-xl md:items-end justify-center pb-9">
             <div className="bg-transparent border-0 rounded-3xl 
@@ -158,7 +156,6 @@ export default function Home(){
         <img className='mx-auto p-7 h-96 md:h-auto' src={doctor} alt='doctor'/>
         </div>
         </div>
-
 
         <Home2/>
 

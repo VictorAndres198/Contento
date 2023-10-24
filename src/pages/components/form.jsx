@@ -74,15 +74,15 @@ export default function FormCita(){
           maxLength={maxLength}
           />
           <div className="flex justify-end">
-          <label htmlFor="" className="text-gray-500">{message.length}</label>
-          <label htmlFor="" className="text-gray-500">/{maxLength}</label>
+          <label className="text-gray-500">{message.length}</label>
+          <label className="text-gray-500">/{maxLength}</label>
           </div>
         </div>
         
         <div className="flex items-center">
             <button 
             type="submit"
-            className="mx-auto bg-gradient-to-l from-pink-500 to-yellow-500 rounded-3xl p-3 font-medium md:px-12 px-6 text-white 
+            className="mx-auto bg-gradient-to-l from-pink-500 to-yellow-500 rounded-3xl p-3 font-medium md:px-12 px-16 text-white 
             hover:bg-gradient-to-l hover:from-pink-600 hover:to-yellow-600 hover:shadow-lg hover:shadow-yellow-600/50 hover:scale-110 
             transition ease-in-out duration-500 hover:-translate-y-1 delay-150 mb-9">
             Get Started

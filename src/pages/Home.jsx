@@ -1,11 +1,14 @@
 import React from "react";
 import { TypeAnimation } from 'react-type-animation';
+import { Link } from "react-router-dom";
+
 import doctor from './img/doctor.svg'
 import consulta from './img/consulta.svg'
-import Home2 from './Home2'
+import TestimonioCarousel from './components/TestimonioCarousel'
 import FlipCard from "./components/flipcard";
 import FormCita from "./components/form";
 import CustomCard from "./components/customcard";
+import Blog from "./components/blog";
 
 
 
@@ -34,7 +37,7 @@ export default function Home(){
                         />
                     <p className="md:text-2xl text-xl font-bold text-slate-800">asdasdasd</p>
                     <div className="flex justify-center md:pr-12 pr-4">
-                    <button className="bg-gradient-to-l from-pink-500 to-yellow-500 rounded-3xl p-3 font-medium my-6 mx-auto md:px-12 px-6 text-white 
+                    <button className="bg-gradient-to-l from-pink-500 to-yellow-500 rounded-3xl p-3 font-medium my-6 mx-auto md:px-12 px-16 text-white 
                     hover:bg-gradient-to-l hover:from-pink-600 hover:to-yellow-600 hover:shadow-lg hover:shadow-yellow-600/50 hover:scale-110 
                     transition ease-in-out duration-500 hover:-translate-y-1 delay-150">Get Started</button>
                     </div>
@@ -93,7 +96,8 @@ export default function Home(){
             boxShadow="none"
         />
         
-        <div className="flex flex-col gap-3 justify-center items-center md:flex-row md:-mt-32 pt-16 md:pt-0 w-full">           
+        <div className="flex flex-col gap-3 
+        justify-center items-center md:flex-row md:-mt-32 pt-16 md:pt-0 w-full">           
            <FlipCard
            imageSrc={doctor}
            title="FlipCard1"
@@ -124,7 +128,7 @@ export default function Home(){
         </div>  
 
         <div className="grid md:grid-cols-2 bg-gradient-to-r from-blue-700 to-sky-700 rounded-3xl md:mx-auto m-7 max-w-screen-xl pt-10 w-11/12">
-        <div className="text-white lg:py-6 lg:px-4 lg:mt-7 lg:mb-7 mt-5">
+        <div className="order-2 md:order-1 text-white lg:py-6 lg:px-4 lg:mt-7 lg:mb-7 mt-5">
             <div className="w-full h-full mx-auto text-left flex flex-col justify-center md:pl-12 pl-4">                
                 <p className="font-bold">Contento</p>
                 <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6">Contento</h1>
@@ -144,21 +148,71 @@ export default function Home(){
                             style={{ fontSize: '2em' }}
                         />
                     <p className="md:text-2xl text-xl font-bold text-slate-800">asdasdasd</p>
-                    <div className="flex justify-center md:pr-12 pr-4">
-                    <button className="bg-gradient-to-l from-pink-500 to-yellow-500 rounded-3xl p-3 font-medium my-6 mx-auto md:px-12 px-6 text-white 
+                    <div className="flex justify-center md:pr-12 pr-4 pb-8 md:pb-0">
+                    <button className="bg-gradient-to-l from-pink-500 to-yellow-500 rounded-3xl p-3 font-medium my-6 mx-auto md:px-12 px-16 text-white 
                     hover:bg-gradient-to-l hover:from-pink-600 hover:to-yellow-600 hover:shadow-lg hover:shadow-yellow-600/50 hover:scale-110 
                     transition ease-in-out duration-500 hover:-translate-y-1 delay-150">Get Started</button>
                     </div>
                 </div>
             </div>
         </div>
-         <div className="md:flex align-middle">                      
+         <div className="md:flex align-middle order-1 md:order-2">                      
         <img className='mx-auto p-7 h-96 md:h-auto' src={doctor} alt='doctor'/>
         </div>
         </div>
 
-        <Home2/>
+        
 
+
+        
+        <div className="text-cyan-400 lg:max-w-screen-xl mx-auto w-full">   
+        <div className="w-full h-full mx-auto text-center flex flex-col justify-center mt-4">   
+        
+            <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6">Testimonios</h1>
+                            
+                <p className="md:text-5xl sm:text-4xl text-xl font-bold">Nuestros pacientes dicen:</p>
+                                
+                <p className="md:text-2xl text-xl font-bold text-slate-800">Estos son los testimonios de ...</p>
+                
+                <TestimonioCarousel/>
+
+
+            <div className="bg-white h-full shadow-lg mt-10">
+                <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 pt-9">Nuestros Blogs</h1>                            
+                <p className="md:text-5xl sm:text-4xl text-xl font-bold">Separando la realidad de la ficción</p>
+                <p className="md:text-2xl text-xl font-bold text-slate-800">Estos son los blogs de ...</p>
+
+            <div className="flex flex-col md:flex-row justify-center items-center md:gap-4 lg:gap-7 px-10 md:px-3 lg:px-0">
+                <Blog                
+                imagen={consulta}   
+                fecha="Octubre 23, 2023"
+                titulo="Loremmm"
+                linkTo="/"
+                />
+                <Blog   
+                imagen={consulta} 
+                fecha="Octubre 23, 2023"
+                titulo="Loremmm"
+                linkTo="/"
+                />
+                <Blog       
+                imagen={consulta}         
+                fecha="Octubre 23, 2023"
+                titulo="Loremmm"
+                linkTo="/"
+                />
+            </div>
+            <Link to="/">
+                <div className="flex text-center">
+                <button className="rounded-3xl p-3 font-medium mb-12 mx-auto md:w-32 lg:w-48 w-48 text-blue-800 border border-blue-800 bg-white 
+                hover:shadow-lg hover:shadow-sky-900/40 hover:scale-110 transition ease-in-out duration-500 hover:-translate-y-1 delay-150">
+                Cargar más
+                </button>
+                </div>
+            </Link> 
+            </div>
+        </div>  
+        </div> 
         </section>
     );
 }

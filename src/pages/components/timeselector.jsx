@@ -34,7 +34,7 @@ export default function TimeSelector() {
       <select
         value={selectedTime}
         onChange={handleTimeChange}
-        className="pl-5 w-full h-8 block rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-offset-1 ring-gray-300 sm:text-sm sm:leading-6 p-0 m-0"
+        className="pl-6 w-full h-8 block rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-offset-1 ring-gray-300 sm:text-sm sm:leading-6 p-0 m-0"
         required    
         placeholder="Hora"  
       >

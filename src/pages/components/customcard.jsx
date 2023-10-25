@@ -22,7 +22,7 @@ export default function CustomCard({ imageSrc, title, description,description2, 
         </div>
       </div>
 
-      <div className="border-0 h-full md:max-w-lg w-full mx-auto" style={{order:order}}>
+      <div className="border-0 md:max-w-lg w-full mx-auto" style={{order:order}}>
       <div className="flex justify-center items-center h-full">
         <img src={imageSrc} alt="imagen" className="md:mx-0" style={{height:height}}/>
         </div>

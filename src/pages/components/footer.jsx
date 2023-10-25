@@ -31,11 +31,11 @@ export default function Footer(){
                 <div className="flex flex-col md:w-1/4 h-full">
                 <div className="w-full items-center align-middle">
                 <p className="font-bold text-sm pb-2">Links</p>
-                <div className="py-1"><Link to="/">Home</Link></div>
-                <div className="py-1"><Link to="/">Servicios</Link></div>
+                <div className="py-1"><Link to="/">Inicio</Link></div>
+                <div className="py-1"><Link to="/Productos">Productos</Link></div>
+                <div className="py-1"><Link to="/PreguntaFrecuente">Preguntas Frecuentes</Link></div>
+                <div className="py-1"><Link to="/">Contáctanos</Link></div>
                 <div className="py-1"><Link to="/">Nosotros</Link></div>
-                <div className="py-1"><Link to="/">Contacto</Link></div>
-                <div className="py-1"><Link to="/">Novedades</Link></div>
                 </div>
                 </div>
 

@@ -34,7 +34,7 @@ body{
     height: 100%;
     content: "";
     z-index: 1;
-    pointer-events: none;    
+    pointer-events: none;
   }
 
   .testimonio-container:before{      
@@ -50,5 +50,32 @@ body{
     .testimonio-container:before,
     .testimonio-container:after {
       width: 100px;
+    }
+  }
+
+  /*PARTE DE LA ANIMACIÓN DEL CARRITO DE COMPRAS*/
+  .carrito-container-entrada {
+    animation: des-productos-entrada 0.5s linear;
+  }
+  
+  .carrito-container-salida {
+    animation: des-productos-salida 0.5s linear;
+  }
+  
+  @keyframes des-productos-entrada {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  
+  @keyframes des-productos-salida {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
     }
   }

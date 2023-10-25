@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Navbar,
   Collapse,
@@ -22,32 +23,32 @@ import {
   InboxArrowDownIcon,
   LifebuoyIcon,
   PowerIcon,
-  RocketLaunchIcon,
   Bars2Icon
 } from "@heroicons/react/24/outline";
 import user from '../img/user.svg';
 import Contento from '../img/ContentoLogo.png';
+import LogoB from '../img/LogoB.png';
 
 // profile menu component
 const profileMenuItems = [
   {
-    label: "My Profile",
+    label: "Mi Perfil",
     icon: UserCircleIcon,
   },
   {
-    label: "Edit Profile",
+    label: "Editar Perfil",
     icon: Cog6ToothIcon,
   },
   {
-    label: "Inbox",
+    label: "Bandeja de Entrada",
     icon: InboxArrowDownIcon,
   },
   {
-    label: "Help",
+    label: "Ayuda",
     icon: LifebuoyIcon,
   },
   {
-    label: "Sign Out",
+    label: "Cerrar Sesión",
     icon: PowerIcon,
   },
 ];
@@ -115,36 +116,37 @@ function ProfileMenu() {
 // nav list menu
 const navListMenuItems = [
   {
-    title: "@material-tailwind/html",
+    title: "Preguntas Frecuentes",
     description:
-      "Learn how to use @material-tailwind/html, packed with rich components and widgets.",
+      "Encuentra información útil para aclarar tus dudas rápidamente.",
+    to: "/PreguntaFrecuente",
   },
   {
-    title: "@material-tailwind/react",
+    title: "Contáctanos",
     description:
-      "Learn how to use @material-tailwind/react, packed with rich components for React.",
+      "Aquí encontrarás información de contacto y un formulario de contacto para que puedas comunicarte con nosotros.",
   },
   {
-    title: "Material Tailwind PRO",
+    title: "Nosotros",
     description:
-      "A complete set of UI Elements for building faster websites in less time.",
+      "Descubre quiénes somos, cuál es nuestra misión y visión, y qué nos impulsa a brindarte servicios de salud mental de alta calidad.",
   },
 ];
  
 function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
  
-  const renderItems = navListMenuItems.map(({ title, description }) => (
-    <a href="#" key={title}>
+  const renderItems = navListMenuItems.map(({ title, description, to }) => (
+    <Link to={to} key={title}>
       <MenuItem className="hover:bg-gray-100 p-3 ">
         <Typography className="mb-1 font-bold text-left text-slate-800 text-xl">
           {title}
         </Typography>
-        <Typography className="font-normal text-gray-600 text-sm  text-left">
+        <Typography className="font-normal text-gray-600 text-sm text-left">
           {description}
         </Typography>
       </MenuItem>
-    </a>
+    </Link>
   ));
  
   return (
@@ -153,7 +155,7 @@ function NavListMenu() {
         <MenuHandler>
           <Typography as="a" href="#" variant="small" className="font-normal">
             <MenuItem className="hidden items-center gap-2 text-slate-800 lg:flex lg:rounded-full hover:bg-gray-100">
-              <Square3Stack3DIcon className="h-[40px] w-[18px]" /> Pages{" "}
+              <Square3Stack3DIcon className="h-[40px] w-[18px]" />Páginas{" "}
               <ChevronDownIcon
                 strokeWidth={2}
                 className={`h-3 w-3 transition-transform ${
@@ -167,9 +169,9 @@ function NavListMenu() {
           <Card
             shadow={false}
             variant="gradient"
-            className="col-span-3 grid h-full w-full place-items-center rounded-md bg-gradient-to-r from-green-800 to-green-400"
+            className="col-span-3 grid h-full w-full place-items-center rounded-md bg-gradient-to-r from-sky-600 to-cyan-800"
           >
-            <RocketLaunchIcon strokeWidth={1} className="h-28 w-28 text-white" />
+            <img alt="LogoContento" className="p-3" src={LogoB}></img>
           </Card>
           <ul className="col-span-4 flex w-full flex-col gap-1 text-slate-800">
             {renderItems}
@@ -189,15 +191,15 @@ function NavListMenu() {
 // nav list component
 const navListItems = [
   {
-    label: "Account",
+    label: "Cuenta",
     icon: UserCircleIcon,
   },
   {
-    label: "Blocks",
+    label: "Productos",
     icon: CubeTransparentIcon,
   },
   {
-    label: "Docs",
+    label: "Documentos",
     icon: CodeBracketSquareIcon,
   },
 ];
@@ -209,16 +211,25 @@ function NavList() {
       {navListItems.map(({ label, icon }, key) => (
         <Typography
           key={label}
-          as="a"
-          href="#"
           variant="small"
           color="blue-gray"
           className="font-normal"
         >
+          
+      {label === "Productos" ? (
+        <Link to="/Productos">        
           <MenuItem className="flex items-center gap-2 lg:rounded-full hover:bg-gray-100 text-slate-800">
             {React.createElement(icon, { className: "h-10 w-[18px]" })}{""}
             {label}
           </MenuItem>
+        </Link>
+        )
+        : (
+          <MenuItem as="a" href="#" className="flex items-center gap-2 lg:rounded-full hover:bg-gray-100 text-slate-800">
+            {React.createElement(icon, { className: "h-10 w-[18px]" })}
+            {label}
+          </MenuItem>
+        )}
         </Typography>
       ))}
     </ul>
@@ -246,7 +257,9 @@ export default function ComplexNavbar() {
           href="#"
           className="mr-4 ml-2 cursor-pointer font-medium text-xl z-20"
         >
+          <Link to="/">
           <img className="h-10 w-30" src={Contento}/>
+          </Link>
         </Typography>
         <div className="absolute top-2/4 left-2/4 hidden -translate-x-2/4 -translate-y-2/4 lg:block z-20">
           <NavList />

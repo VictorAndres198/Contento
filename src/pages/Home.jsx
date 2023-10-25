@@ -27,8 +27,8 @@ export default function Home(){
         <div className="text-white lg:py-6 lg:px-4 lg:mt-7 lg:mb-7 mt-5">
             <div className="w-full h-full mx-auto text-left flex flex-col justify-center md:pl-12 pl-4">                
                 <div>
-                    <h1 className="md:text-5xl sm:text-4xl text-xl font-bold">Mantente Contento con nuestra ayuda!</h1>
-                    <p className="md:text-2xl text-xl font-medium text-white pt-5">Nuestro equipo de experimentados psicólogos te ayudarán a afrontar cualquier malestar que estes experimentando</p>
+                    <h1 className="md:text-5xl sm:text-4xl text-2xl font-bold">Mantente Contento con nuestra ayuda!</h1>
+                    <p className="md:text-2xl text-lg font-medium text-white pt-5">Nuestro equipo de experimentados psicólogos te ayudarán a afrontar cualquier malestar que estes experimentando</p>
                     <div className="flex justify-center md:pr-12 pr-4">
                     <button className="bg-gradient-to-l from-green-500 to-lime-500 rounded-3xl p-3 font-semibold my-6 mx-auto md:px-12 px-16 text-white 
                     hover:bg-gradient-to-l hover:from-green-500 hover:to-lime-500 hover:shadow-lg hover:shadow-lime-400/50 hover:scale-110 

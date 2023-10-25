@@ -45,3 +45,10 @@ body{
     right: 0;  
     background: linear-gradient(to right, rgba(255,255,255,0),#F4FFFB);       
   }
+
+  @media (max-width: 768px) {
+    .testimonio-container:before,
+    .testimonio-container:after {
+      width: 100px;
+    }
+  }

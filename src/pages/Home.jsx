@@ -132,11 +132,11 @@ export default function Home(){
             <div className="w-full h-full mx-auto text-left flex flex-col justify-center md:pl-12 pl-4">                
                 <p className="font-bold text-cyan-400 text-2xl pb-4">Soporte en línea</p>
                 <div>
-                    <p className="md:text-5xl sm:text-4xl text-xl font-bold pb-3">Tu salud mental en nuestras</p>
-                    <p className="md:text-2xl sm:text-xl text-lg font-medium pb-3">Te ayudamos con:</p>
+                    <p className="md:text-5xl sm:text-4xl text-xl font-bold pb-3">Tu salud mental en nuestras manos</p>
+                    <p className="md:text-2xl sm:text-xl text-lg font-medium pb-3">Nuestros personal capacitado te ayudara con:</p>
                         <TypeAnimation className="md:text-2xl sm:text-xl text-lg font-medium"
                             sequence={[
-                            "Terapia",
+                            "Psicoterapia",
                             1000,
                             "Técnicas de meditación",
                             1000,

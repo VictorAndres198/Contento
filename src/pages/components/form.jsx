@@ -63,6 +63,19 @@ export default function FormCita(){
         <div className="mx-auto w-4/5 bg-white rounded-lg text-2xl border-0">
                 <DoctorSelector/>
         </div>
+
+        <div className="w-4/5 mx-auto">
+          <input
+            id="imagen"
+            name="imagen"
+            type="file"
+            autoComplete="email"
+            accept="image/*" 
+            maxSize="2097152" // Limita el tamaño a 2 MB (2 MB * 1024 KB/MB * 1024 B/KB)
+            className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            placeholder="Examinar..."
+          />
+        </div>
         
         <div className="w-4/5 mx-auto">
           <textarea id="mensaje" name="mensaje" rows="4" type="text" autoComplete="off"  placeholder="Mensaje..."

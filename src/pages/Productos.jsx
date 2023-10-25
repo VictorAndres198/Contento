@@ -69,22 +69,22 @@ const productos = [
         <section className="max-w-screen-xl md:mx-auto">
             <div className="flex flex-col"> 
                 <div className="flex items-end right-0 ml-auto pr-10 pt-6">
-                <button
-                id="btncarrito"
-                className="bg-gradient-to-tr from-blue-700 to-cyan-700 rounded-full w-fit"
-                onClick={toggleCarrito}
-                >
-                  <ShoppingCartIcon className="h-16 p-3 text-white" />
-                </button>
-                <div className="pointer-events-none ml-9 absolute rounded-full bg-emerald-400 text-center p-1 font-semibold w-8 h-8">
-                  {cantidadProductos}
+                    <button
+                    id="btncarrito"
+                    className="bg-gradient-to-tr from-blue-700 to-cyan-700 rounded-full w-fit mb-3"
+                    onClick={toggleCarrito}
+                    >
+                      <ShoppingCartIcon className="h-16 p-3 text-white" />
+                    </button>
+                    <div className="pointer-events-none ml-9 absolute rounded-full bg-emerald-400 text-center p-1 font-semibold w-8 h-8">
+                      {cantidadProductos}
+                    </div>
                 </div>
-            </div>
 
                 {/*Parte de los medicamentos*/}
                 <div className="flex flex-col mx-auto">
                     {/* ...contenido de medicamentos... */}
-                    <div className="grid md:grid-cols-3 grid-flow-row">
+                    <div className="grid md:grid-cols-3 grid-flow-row -mt-16">
                       {productos.map((producto, index) => (
                         <div key={index} className="mb-4 mx-5 mt-28 text-left flex flex-col lg:w-80 w-60 h-80 bg-gradient-to-r from-blue-900 to-green-700 rounded-3xl">
                           <div className="flex justify-center">

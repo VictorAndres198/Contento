@@ -125,11 +125,13 @@ const navListMenuItems = [
     title: "Contáctanos",
     description:
       "Aquí encontrarás información de contacto y un formulario de contacto para que puedas comunicarte con nosotros.",
+    to: "/Contactanos",
   },
   {
     title: "Nosotros",
     description:
       "Descubre quiénes somos, cuál es nuestra misión y visión, y qué nos impulsa a brindarte servicios de salud mental de alta calidad.",
+    to: "/Nosotros",    
   },
 ];
  

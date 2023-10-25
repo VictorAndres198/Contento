@@ -34,8 +34,8 @@ export default function Footer(){
                 <div className="py-1"><Link to="/">Inicio</Link></div>
                 <div className="py-1"><Link to="/Productos">Productos</Link></div>
                 <div className="py-1"><Link to="/PreguntaFrecuente">Preguntas Frecuentes</Link></div>
-                <div className="py-1"><Link to="/">Contáctanos</Link></div>
-                <div className="py-1"><Link to="/">Nosotros</Link></div>
+                <div className="py-1"><Link to="/Contactanos">Contáctanos</Link></div>
+                <div className="py-1"><Link to="/Nosotros">Nosotros</Link></div>
                 </div>
                 </div>
 

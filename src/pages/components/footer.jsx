@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ContentoLogo from "../img/ContentoLogoB.png"
 
 export default function Footer(){
     return(
@@ -9,7 +10,7 @@ export default function Footer(){
 
                 <div className="flex flex-col md:w-1/4 h-full md:pr-12">
                 <div className="w-full items-center align-middle">
-                    <img className="font-bold text-sm pb-2" alt="Logo" src=""></img>
+                    <img className="font-bold text-sm pb-2 h-12" alt="Logo" src={ContentoLogo}></img>
                 </div>
                 <p className="py-2 text-sm">
                     Nuestra misión es ayudarte a cuidar de tu salud mental y emocional. 

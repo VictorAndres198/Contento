@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function Blog({linkTo,titulo,fecha,imagen}){
     return(
-            <div className="bg-white shadow-lg rounded-3xl h-full lg:w-3/12 md:w-2/4 w-3/4 my-10 text-black text-left px-5">
+            <div className="bg-white shadow-lg hover:shadow-blue-800/40 rounded-3xl md:h-full lg:w-3/12 md:w-2/4 w-3/4 my-10 text-black text-left px-5">
                 <img className="w-full h-2/4 rounded-3xl" alt="BlogImg" src={imagen}>
                 </img>
-                <p>
+                <p className="pt-2">
                     {fecha}
                 </p> 
                 <h1 className="text-xl text-blue-800 font-bold">

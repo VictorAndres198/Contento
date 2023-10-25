@@ -82,10 +82,10 @@ export default function FormCita(){
         <div className="flex items-center">
             <button 
             type="submit"
-            className="mx-auto bg-gradient-to-l from-pink-500 to-yellow-500 rounded-3xl p-3 font-medium md:px-12 px-16 text-white 
-            hover:bg-gradient-to-l hover:from-pink-600 hover:to-yellow-600 hover:shadow-lg hover:shadow-yellow-600/50 hover:scale-110 
+            className="mx-auto bg-gradient-to-l from-green-500 to-lime-500 rounded-3xl p-3 font-semibold  md:px-12 px-16 text-white 
+            hover:bg-gradient-to-l hover:from-green-500 hover:to-lime-500 hover:shadow-lg hover:shadow-lime-400/50 hover:scale-110 
             transition ease-in-out duration-500 hover:-translate-y-1 delay-150 mb-9">
-            Get Started
+            Reservar
             </button>
         </div>
     </form>

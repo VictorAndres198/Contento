@@ -26,6 +26,7 @@ import {
   Bars2Icon
 } from "@heroicons/react/24/outline";
 import user from '../img/user.svg';
+import Contento from '../img/ContentoLogo.png';
 
 // profile menu component
 const profileMenuItems = [
@@ -243,9 +244,9 @@ export default function ComplexNavbar() {
         <Typography
           as="a"
           href="#"
-          className="mr-4 ml-2 cursor-pointer py-1.5 font-medium text-xl z-20"
+          className="mr-4 ml-2 cursor-pointer font-medium text-xl z-20"
         >
-          Contento
+          <img className="h-10 w-30" src={Contento}/>
         </Typography>
         <div className="absolute top-2/4 left-2/4 hidden -translate-x-2/4 -translate-y-2/4 lg:block z-20">
           <NavList />

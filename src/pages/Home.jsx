@@ -191,6 +191,11 @@ export default function Home(){
                 <p className="md:text-2xl text-lg font-semibold text-slate-800 py-4">Explora nuestro contenido sobre bienestar mental 
                 y descubre consejos para cuidar tu salud emocional.</p>
 
+
+
+
+                
+
             <div className="flex flex-col md:flex-row justify-center items-center md:gap-4 lg:gap-7 px-10 md:px-3 lg:px-0">
                 <Blog                
                 imagen={imgBlog1}   

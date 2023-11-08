@@ -77,7 +77,7 @@ export default function FormReclamo(){
 
 
   return(
-    <form className="space-y-4" action="#" method="POST">
+    <form className="space-y-4" action="#" method="POST" enctype="multipart/form-data">
                     
         <div className="w-4/5 mx-auto">
           <input
@@ -165,11 +165,13 @@ export default function FormReclamo(){
         <div className="flex items-center">
             <button
             type="submit"
+            onClick={handleSubmit}
             className="mx-auto bg-gradient-to-l from-green-500 to-lime-500 rounded-3xl p-3 font-semibold  md:px-12 px-16 text-white 
             hover:bg-gradient-to-l hover:from-green-500 hover:to-lime-500 hover:shadow-lg hover:shadow-lime-400/50 hover:scale-110 
             transition ease-in-out duration-500 hover:-translate-y-1 delay-150 mb-9">
-            Enviar Reclamo
+            Enviar Reclamo            
             </button>
+            
         </div>
     </form>
   );

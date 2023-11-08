@@ -15,7 +15,7 @@ export default function GoogleMap() {
     }
 
     // Coordenadas de la ubicación de tu empresa (cambia estos valores según tu dirección)
-    const companyLocation = { lat: -12.135, lng: -77.0 };
+    const companyLocation = { lat: -12.074702262878418, lng: -77.0439224243164 };
 
     // Opciones para personalizar el mapa
     const mapOptions = {
@@ -44,5 +44,5 @@ export default function GoogleMap() {
     });
   }, []);
 
-  return <div id="google-map" style={{ width: '100%', height: '400px' }}></div>;  
+  return <div id="google-map" style={{ width: '100%', height: '100%' }}></div>;  
 }

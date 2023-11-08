@@ -21,8 +21,7 @@ export default function Footer(){
                 <div className="flex flex-col md:w-1/4 h-full">
                 <div className="w-full items-center align-middle text-sm">
                 <p className="font-bold pb-2">Dirección</p>
-                <p className="py-3 md:pr-16">Av. San Martín 1704, San Isidro
-                Lima, Perú</p>
+                <p className="py-3 md:pr-16">Salud Mental, Jirón Huayna Capac, Jesús María, Lima, Perú</p>
                 <p className="w-fit border-b border-gray-400">Contento@gmail.com</p>
                 <p className="py-3 font-bold">+51 - 961 427 551</p>
                 </div>

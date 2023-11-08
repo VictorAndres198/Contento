@@ -27,7 +27,7 @@ function PreguntaFrecuente({ pregunta, respuesta }) {
 
 export default function PreguntasFrecuentes() {
   return (
-    <div className="max-w-screen-xl mx-auto px-60 py-10">
+    <div className="max-w-screen-xl mx-auto lg:px-60 md:px-36 px-10 py-10">
       <h2 className="text-3xl font-bold mb-4 text-blue-800">Preguntas Frecuentes</h2>
       <PreguntaFrecuente
         pregunta="¿Cuál es el tiempo de entrega?"
@@ -39,7 +39,10 @@ export default function PreguntasFrecuentes() {
       />
       <PreguntaFrecuente
         pregunta="¿Cuál es el proceso para realizar una devolución?"
-        respuesta="Para realizar una devolución, por favor sigue estos pasos: 1) Inicia sesión en tu cuenta, 2) Ve a la sección de historial de compras, 3) Selecciona la orden que deseas devolver y sigue las instrucciones. Si tienes alguna pregunta, no dudes en contactarnos."
+        respuesta={`Para realizar una devolución, por favor sigue estos pasos:
+        1) Inicia sesión en tu cuenta
+        2) Ve a la sección de historial de compras
+        3) Selecciona la orden que deseas devolver y sigue las instrucciones. Si tienes alguna pregunta, no dudes en contactarnos.`}
       />
       <PreguntaFrecuente
         pregunta="¿Puedo rastrear mi pedido?"

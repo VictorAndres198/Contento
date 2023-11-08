@@ -5,6 +5,8 @@ import DoctorSelector from "./doctorselector";
 
 export default function FormCita(){
     const [message, setMessage] = useState("");
+    const [selectedFile, setSelectedFile] = useState(null);
+
     const maxLength = 250; // Establece el límite de caracteres
   
     // Función para manejar el cambio en el área de texto
@@ -12,6 +14,43 @@ export default function FormCita(){
     const text = event.target.value;
     setMessage(text); 
   };
+
+  //=================================================== AGREGADO PARA LIMITAR LA IMAGEN A 2MB ===================================================
+  // Función para manejar el cambio en el área de archivo
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    
+    // Verificar si se seleccionó un archivo
+    if (file) {
+      // Verificar el tamaño del archivo (en bytes)
+      const maxSize = 2 * 1024 * 1024; // 2 MB
+
+      if (file.size <= maxSize) {
+        setSelectedFile(file);
+      } else {
+        alert("El archivo es demasiado grande. Por favor, seleccione un archivo de hasta 2 MB.");
+        // Restablecer el valor del input de archivo
+        event.target.value = null;
+      }
+    } else {
+      setSelectedFile(null);
+    }
+  };
+  
+  
+  // Función para manejar el envío del formulario
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (selectedFile) {
+      // Aquí puedes enviar el archivo seleccionado al servidor
+      // Por ejemplo, usando una solicitud HTTP o una biblioteca como axios.
+      // También puedes acceder al archivo como `selectedFile` y procesarlo según tus necesidades.
+    } else {
+      alert("Por favor, seleccione un archivo antes de enviar el formulario.");
+    }
+  };
+
   return(
     <form className="space-y-4" action="#" method="POST">
                     
@@ -70,8 +109,8 @@ export default function FormCita(){
             name="imagen"
             type="file"
             accept="image/*" 
-            maxSize="2097152" // Limita el tamaño a 2 MB (2 MB * 1024 KB/MB * 1024 B/KB)
-            className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-
+            onChange={handleFileChange} 
+            className="block w-full px-2 rounded-md border-0 py-1.5 text-slate-800 shadow-
             sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm 
             sm:leading-6"
             placeholder="Examinar..."

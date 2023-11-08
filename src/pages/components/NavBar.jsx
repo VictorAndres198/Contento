@@ -155,7 +155,7 @@ function NavListMenu() {
     <React.Fragment>
       <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
         <MenuHandler>
-          <Typography as="a" href="#" variant="small" className="font-normal">
+          <Typography as="span" href="#" variant="small" className="font-normal">
             <MenuItem className="hidden items-center gap-2 text-slate-800 lg:flex lg:rounded-full hover:bg-gray-100">
               <Square3Stack3DIcon className="h-[40px] w-[18px]" />Páginas{" "}
               <ChevronDownIcon
@@ -227,7 +227,7 @@ function NavList() {
         </Link>
         )
         : (
-          <MenuItem as="a" href="#" className="flex items-center gap-2 lg:rounded-full hover:bg-gray-100 text-slate-800">
+          <MenuItem as="span" href="#" className="flex items-center gap-2 lg:rounded-full hover:bg-gray-100 text-slate-800">
             {React.createElement(icon, { className: "h-10 w-[18px]" })}
             {label}
           </MenuItem>
@@ -255,7 +255,7 @@ export default function ComplexNavbar() {
     bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-2xl bg-opacity-80 border border-gray-100 z-10">
       <div className="relative mx-auto flex items-center text-slate-800">
         <Typography
-          as="a"
+          as="span"
           href="#"
           className="mr-4 ml-2 cursor-pointer font-medium text-xl z-20"
         >

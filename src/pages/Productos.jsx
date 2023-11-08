@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {ShoppingCartIcon} from "@heroicons/react/24/outline";
+import {ShoppingCartIcon,TrashIcon} from "@heroicons/react/24/outline";
 import "../index.css"
 import imgMedicamento from "./img/Medicamento.png";
 import imgRisperdal from "./img/MedRisperdal.png";
@@ -7,9 +7,6 @@ import imgIbuprofeno from "./img/MedIbuprofeno.png";
 import imgCaptropil from "./img/MedCaptropil.png";
 import imgGlibenClamida from "./img/MedGlibenClamida.png";
 import imgLosartan from "./img/MedLosartan.png";
-
-
-
 
 
 // Define un array de objetos que contiene la información de los productos
@@ -65,6 +62,14 @@ const productos = [
           setCantidadProductos(cantidadProductos + 1);
         };
         
+        // Función para calcular el total
+        const calcularTotal = () => {
+          let total = 0;
+          carrito.forEach((producto) => {
+            total += parseFloat(producto.precio);
+          });
+          return total.toFixed(2); // Redondeamos el total a 2 decimales
+        };
     return(
         <section className="max-w-screen-xl md:mx-auto">
             <div className="flex flex-col"> 
@@ -107,15 +112,18 @@ const productos = [
 
 
                {/* Parte del Carrito ocultable */}
-                <div
-                  className={`flex flex-col border border-black bg-white w-80 h-screen absolute ${
+                <div className={`border border-black bg-white h-screen w-80 absolute ${
                     showCarrito ? "carrito-container-entrada" : "carrito-container-salida delay-500 -translate-x-full"
+                  }`}></div>
+                <div
+                  className={`mt-10 ml-4 flex flex-col border border-black bg-white w-72 h-[500px] overflow-y-auto absolute ${
+                    showCarrito ? "carrito-container-entrada" : "carrito-container-salida delay-500 -translate-x-80"
                   }`}
                 >
-                  <div className="mt-9 w-72 mx-auto">
+                  <div className="mt-4 w-64 mx-auto">
                     {carrito.map((producto, index) => (
                       <div key={index} className="border border-black rounded-3xl mb-3 p-3">
-                        <div className="flex flex-row items-center">
+                        <div className="flex flex-row items-center">                          
                           <img className="w-14 h-fit p-1 ml-5" src={producto.imagen} alt={producto.nombre} />
                           <div className="flex flex-col pl-6 py-1">
                             <div>{producto.nombre}</div>
@@ -130,10 +138,39 @@ const productos = [
                           <button className="rounded-full border border-black h-8 w-8 font-bold text-slate-500 text-5xl flex items-center justify-center">
                             <p className="pointer-events-none absolute pb-[13px]">+</p>
                           </button>
+                          <button className="ml-[200px] absolute w-7">
+                          <TrashIcon className="text-slate-500 border border-slate-700 rounded-3xl p-1"></TrashIcon>
+                          </button>
                         </div>
                       </div>
                     ))}
                   </div>
+                </div>
+
+                
+
+
+                <p className={`absolute ml-[115px] mt-[580px] ${
+                    showCarrito ? "carrito-container-entrada-t" : "carrito-container-salida-c -translate-x-80"
+                  }`}>
+                  Total: 
+                </p>
+                
+                <label className={`absolute ml-[155px] mt-[580px] ${
+                    showCarrito ? "carrito-container-entrada-t2" : "carrito-container-salida-c -translate-x-80"
+                  }`}>
+                  {calcularTotal()}
+                </label>
+                
+                <div className={`absolute ml-20 mt-[650px] ${
+                    showCarrito ? "carrito-container-entrada-b" : "carrito-container-salida-c -translate-x-80"
+                  }`}>
+                <button 
+                className="mx-auto bg-gradient-to-l from-green-500 to-lime-500 rounded-3xl p-3 font-semibold  md:px-12 px-16 text-white 
+                hover:bg-gradient-to-l hover:from-green-500 hover:to-lime-500 hover:shadow-lg hover:shadow-lime-400/50 hover:scale-110 
+                transition ease-in-out duration-500 hover:-translate-y-1 delay-150 mb-9">
+                Comprar
+                </button>
                 </div>
                 {/*Solución para que no se vea el carrito ocultable*/}
                 <div className="bg-[#F4FFFB] w-80 h-screen absolute -translate-x-full"></div>

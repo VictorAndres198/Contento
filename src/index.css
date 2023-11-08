@@ -62,9 +62,50 @@ body{
     animation: des-productos-salida 0.5s linear;
   }
   
+  .carrito-container-entrada-b {
+    animation: des-productos-entrada-b 0.5s linear;
+  }
+  @keyframes des-productos-entrada-b {
+    0% {
+      transform: translateX(-150%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  
+  .carrito-container-salida-c {
+    animation: des-productos-salida 0s linear;
+  }
+
   @keyframes des-productos-entrada {
     0% {
       transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  .carrito-container-entrada-t {
+    animation: des-productos-entrada-t 0.5s linear;
+  }
+
+  @keyframes des-productos-entrada-t {
+    0% {
+      transform: translateX(-600%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  .carrito-container-entrada-t2 {
+    animation: des-productos-entrada-t2 0.5s linear;
+  }
+  @keyframes des-productos-entrada-t2 {
+    0% {
+      transform: translateX(-1300%);
     }
     100% {
       transform: translateX(0%);

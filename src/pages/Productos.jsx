@@ -1,47 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {ShoppingCartIcon,TrashIcon} from "@heroicons/react/24/outline";
 import "../index.css"
-import imgMedicamento from "./img/Medicamento.png";
-import imgRisperdal from "./img/MedRisperdal.png";
-import imgIbuprofeno from "./img/MedIbuprofeno.png";
-import imgCaptropil from "./img/MedCaptropil.png";
-import imgGlibenClamida from "./img/MedGlibenClamida.png";
-import imgLosartan from "./img/MedLosartan.png";
+import db from './components/firebase'; // Importa el objeto db de tu archivo de configuración de Firebase
+import { collection, getDocs } from 'firebase/firestore'; // Importa los métodos necesarios de Firebase
 
 
-// Define un array de objetos que contiene la información de los productos
-const productos = [
-    {
-      nombre: "Risperdal",
-      precio: "31.50",
-      stock: 100,
-      imagen: imgRisperdal, // Asegúrate de tener la ruta correcta para la imagen
-    },
-    {
-        nombre: "Ibuprofeno",
-        precio: "11.90",
-        stock: 150,
-        imagen: imgIbuprofeno, // Asegúrate de tener la ruta correcta para la imagen
-    },
-    {
-        nombre: "Captropil",
-        precio: "0.80",
-        stock: 150,
-        imagen: imgCaptropil, // Asegúrate de tener la ruta correcta para la imagen
-    },
-    {
-        nombre: "GlibenClamida",
-        precio: "3.80",
-        stock: 150,
-        imagen: imgGlibenClamida, // Asegúrate de tener la ruta correcta para la imagen
-    },
-    {
-        nombre: "Losartan",
-        precio: "2.50",
-        stock: 150,
-        imagen: imgLosartan, // Asegúrate de tener la ruta correcta para la imagen
-    }
-];
     export default function Productos() {
 
         const [showCarrito, setShowCarrito] = useState(false);
@@ -70,6 +33,23 @@ const productos = [
           });
           return total.toFixed(2); // Redondeamos el total a 2 decimales
         };
+
+        const [productos, setProductos] = useState([]);
+
+        useEffect(() => {
+          const obtenerProductos = async () => {
+            try {
+              const querySnapshot = await getDocs(collection(db, 'Productos'));
+              const productosData = querySnapshot.docs.map((doc) => doc.data());
+              setProductos(productosData);
+            } catch (error) {
+              console.error('Error al obtener los productos:', error);
+            }
+          };
+      
+          obtenerProductos();
+        }, []);
+
     return(
         <section className="max-w-screen-xl md:mx-auto">
             <div className="flex flex-col"> 

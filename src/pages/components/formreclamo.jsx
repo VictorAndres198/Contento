@@ -1,4 +1,6 @@
 import React,{useState} from "react";
+import db from './firebase'; // Importa el objeto db de tu archivo de configuración de Firebase
+import { collection, addDoc } from 'firebase/firestore';
 
 export default function FormReclamo(){
     const [message, setMessage] = useState("");
@@ -44,15 +46,32 @@ export default function FormReclamo(){
   
   
   // Función para manejar el envío del formulario
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const reclamoData = {
+        celular: document.getElementById("numero_celular").value,
+        correo: document.getElementById("email").value,
+        detalle: message,
+        motivo: selectedOption,
+        nombre: document.getElementById("nombre").value,
+        pruebas: selectedFile ? selectedFile.name : "Sin archivo adjunto",
+      };
 
-    if (selectedFile) {
-      // Aquí puedes enviar el archivo seleccionado al servidor
-      // Por ejemplo, usando una solicitud HTTP o una biblioteca como axios.
-      // También puedes acceder al archivo como `selectedFile` y procesarlo según tus necesidades.
-    } else {
-      alert("Por favor, seleccione un archivo antes de enviar el formulario.");
+      const docRef = await addDoc(collection(db, "Reclamos"), reclamoData);
+
+      console.log("Reclamo registrado con ID: ", docRef.id);
+      
+      // Limpiar los campos del formulario después de enviar
+      setMessage("");
+      setSelectedOption("");
+      setSelectedFile(null);
+      // ... Limpiar otros campos del formulario ...
+
+      alert("Reclamo enviado con éxito.");
+    } catch (error) {
+      console.error("Error al enviar el reclamo: ", error);
+      alert("Hubo un error al enviar el reclamo. Inténtalo de nuevo más tarde.");
     }
   };
 

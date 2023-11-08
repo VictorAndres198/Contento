@@ -1,12 +1,14 @@
 import React,{useState} from "react";
 import db from './firebase'; // Importa el objeto db de tu archivo de configuración de Firebase
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function FormReclamo(){
     const [message, setMessage] = useState("");
     const [selectedOption, setSelectedOption] = useState(""); // Estado para la opción seleccionada
     const [selectedFile, setSelectedFile] = useState(null);
-
+    const [imageURL, setImageURL] = useState(""); // Para almacenar la URL de la imagen
+    const maxSize = 2 * 1024 * 1024; // 2 MB
 
     const maxLength = 250; // Establece el límite de caracteres
   
@@ -46,27 +48,34 @@ export default function FormReclamo(){
   
   
   // Función para manejar el envío del formulario
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+
     try {
+      if (selectedFile) {
+        const storageRef = ref(getStorage(), 'reclamos/' + selectedFile.name);
+        await uploadBytes(storageRef, selectedFile);
+        const downloadURL = await getDownloadURL(storageRef);
+        setImageURL(downloadURL);
+      }
+
       const reclamoData = {
         celular: document.getElementById("numero_celular").value,
         correo: document.getElementById("email").value,
         detalle: message,
         motivo: selectedOption,
         nombre: document.getElementById("nombre").value,
-        pruebas: selectedFile ? selectedFile.name : "Sin archivo adjunto",
+        pruebas: imageURL || "Sin archivo adjunto",
       };
 
       const docRef = await addDoc(collection(db, "Reclamos"), reclamoData);
 
       console.log("Reclamo registrado con ID: ", docRef.id);
-      
-      // Limpiar los campos del formulario después de enviar
+
       setMessage("");
       setSelectedOption("");
       setSelectedFile(null);
-      // ... Limpiar otros campos del formulario ...
+      setImageURL("");
 
       alert("Reclamo enviado con éxito.");
     } catch (error) {
@@ -74,6 +83,7 @@ export default function FormReclamo(){
       alert("Hubo un error al enviar el reclamo. Inténtalo de nuevo más tarde.");
     }
   };
+  
 
 
   return(

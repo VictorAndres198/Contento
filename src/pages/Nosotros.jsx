@@ -5,7 +5,7 @@ export default function Nosotros(){
         <section className="max-w-screen-xl mx-auto py-10">
             <div className="flex md:flex-row flex-col">
                 
-                <div className="w-96 h-screen">
+                <div className="w-96 h-screen ">
                     
                 </div>
                 

@@ -17,8 +17,11 @@ export default function DateSelector() {
   maxDate.setDate(minDate.getDate() + 7);
 
   return (
-    <div className="relative flex flex-row h-full w-full p-0 m-0 rounded-md">
+    <div
+    className="relative flex flex-row h-full w-full p-0 m-0 rounded-md">
       <DatePicker
+        id="selector_fecha_cita"
+        name="selector_fecha_cita"
         selected={selectedDate}
         onChange={handleDateChange}
         minDate={minDate}

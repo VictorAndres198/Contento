@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {ShoppingCartIcon,TrashIcon} from "@heroicons/react/24/outline";
 import "../index.css"
-import db from './components/firebase'; // Importa el objeto db de tu archivo de configuración de Firebase
+import {db} from './components/firebase'; // Importa el objeto db de tu archivo de configuración de Firebase
 import { collection, getDocs } from 'firebase/firestore'; // Importa los métodos necesarios de Firebase
 
 

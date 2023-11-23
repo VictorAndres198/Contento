@@ -120,3 +120,16 @@ body{
       transform: translateX(-100%);
     }
   }
+
+  /*PARTE DEL FORM ANIMADO PARA LOS LABEL*/
+  .label-focus {
+    transform: translate(-5px, -32px);
+    font-size: 2rem;
+    color: #062f88;
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  .label-original {
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  

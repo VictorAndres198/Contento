@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import db from './firebase'; // Importa el objeto db de tu archivo de configuración de Firebase
+import {db} from './firebase'; // Importa el objeto db de tu archivo de configuración de Firebase
 import { collection, addDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
@@ -8,7 +8,6 @@ export default function FormReclamo(){
     const [selectedOption, setSelectedOption] = useState(""); // Estado para la opción seleccionada
     const [selectedFile, setSelectedFile] = useState(null);
     const [imageURL, setImageURL] = useState(""); // Para almacenar la URL de la imagen
-    const maxSize = 2 * 1024 * 1024; // 2 MB
 
     const maxLength = 250; // Establece el límite de caracteres
   
@@ -91,8 +90,8 @@ export default function FormReclamo(){
                     
         <div className="w-4/5 mx-auto">
           <input
-            id="nombre"
-            name="nombre"
+            id="nombrereclamo"
+            name="nombrereclamo"
             type="text"
             autoComplete="off"
             required
@@ -103,8 +102,8 @@ export default function FormReclamo(){
 
         <div className="w-4/5 mx-auto">
           <input
-            id="email"
-            name="email"
+            id="emailreclamo"
+            name="emailreclamo"
             type="email"
             autoComplete="email"
             required
@@ -115,8 +114,8 @@ export default function FormReclamo(){
 
         <div className="w-4/5 mx-auto">
           <input
-            id="numero_celular"
-            name="numero_celular"
+            id="numero_celular_reclamo"
+            name="numero_celular_reclamo"
             type="tel"
             autoComplete="off"
             required
@@ -128,8 +127,8 @@ export default function FormReclamo(){
         <div className="w-4/5 mx-auto">
         <p className="text-slate-800 pb-1 pl-1">Adjuntar Pruebas (Opcional)</p>
         <input
-          id="imagen"
-          name="imagen"
+          id="imagenreclamo"
+          name="imagenreclamo"
           type="file"
           accept="image/*" 
           onChange={handleFileChange} 
@@ -142,8 +141,8 @@ export default function FormReclamo(){
         
         <div className="w-4/5 mx-auto">
         <select
-          id="motivo"
-          name="motivo"
+          id="motivoreclamo"
+          name="motivoreclamo"
           required
           value={selectedOption}
           onChange={handleOptionChange}
@@ -157,7 +156,7 @@ export default function FormReclamo(){
       </div>
 
         <div className="w-4/5 mx-auto">
-          <textarea id="mensaje" name="mensaje" rows="4" type="text" autoComplete="off"  
+          <textarea id="mensajereclamo" name="mensaje" rows="4" type="text" autoComplete="off"  
           placeholder="Ingresa el detalle de tu reclamo..."
           className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

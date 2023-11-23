@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"; // Estilos por defecto
 import { ClockIcon } from "@heroicons/react/24/outline"; // Icono de reloj
 
@@ -32,6 +31,8 @@ export default function TimeSelector() {
   return (
     <div className="relative flex flex-row h-full w-full p-0 m-0 rounded-md">
       <select
+        id="selector_hora_cita"
+        name="selector_hora_cita"
         value={selectedTime}
         onChange={handleTimeChange}
         className="pl-6 w-full h-8 block rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-offset-1 ring-gray-300 sm:text-sm sm:leading-6 p-0 m-0"

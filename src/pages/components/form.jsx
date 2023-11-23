@@ -56,8 +56,8 @@ export default function FormCita(){
                     
         <div className="w-4/5 mx-auto">
           <input
-            id="nombre"
-            name="nombre"
+            id="nombrecita"
+            name="nombrecita"
             type="text"
             autoComplete="off"
             required
@@ -68,8 +68,8 @@ export default function FormCita(){
 
         <div className="w-4/5 mx-auto">
           <input
-            id="email"
-            name="email"
+            id="emailcita"
+            name="emailcita"
             type="email"
             autoComplete="email"
             required
@@ -105,8 +105,8 @@ export default function FormCita(){
 
         <div className="w-4/5 mx-auto">
           <input
-            id="imagen"
-            name="imagen"
+            id="imagencita"
+            name="imagencita"
             type="file"
             accept="image/*" 
             onChange={handleFileChange} 
@@ -118,7 +118,7 @@ export default function FormCita(){
         </div>
         
         <div className="w-4/5 mx-auto">
-          <textarea id="mensaje" name="mensaje" rows="4" type="text" autoComplete="off"  placeholder="Mensaje..."
+          <textarea id="mensajecita" name="mensaje" rows="4" type="text" autoComplete="off"  placeholder="Mensaje..."
           className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           style={{ resize: "none" }}
@@ -127,8 +127,8 @@ export default function FormCita(){
           maxLength={maxLength}
           />
           <div className="flex justify-end">
-          <label className="text-gray-500">{message.length}</label>
-          <label className="text-gray-500">/{maxLength}</label>
+          <label className="text-gray-500" id="longitud-mensaje">{message.length}</label>
+          <label className="text-gray-500" id="maxima-longitud">/{maxLength}</label>
           </div>
         </div>
         

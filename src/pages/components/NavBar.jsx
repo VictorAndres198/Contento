@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Navbar,
   Collapse,
@@ -23,9 +23,16 @@ import {
   InboxArrowDownIcon,
   LifebuoyIcon,
   PowerIcon,
-  Bars2Icon
+  Bars2Icon,
+  RocketLaunchIcon
 } from "@heroicons/react/24/outline";
-import user from '../img/user.svg';
+
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./firebase"; // Asegúrate de importar el objeto `auth` de tu archivo de configuración de Firebase
+
+import Login from "./login";
+
+import User from '../img/user.svg';
 import Contento from '../img/ContentoLogo.png';
 import LogoB from '../img/LogoB.png';
 
@@ -47,31 +54,62 @@ const profileMenuItems = [
     label: "Ayuda",
     icon: LifebuoyIcon,
   },
-  {
-    label: "Cerrar Sesión",
-    icon: PowerIcon,
-  },
 ];
  
 function ProfileMenu() {
+
+  const [user] = useAuthState(auth);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
- 
-  const closeMenu = () => setIsMenuOpen(false);
- 
+  const [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false);
+  const navigate = useNavigate();
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const toggleLoginForm = () => {
+    setTimeout(() => {
+      setIsLoginFormOpen((prev) => !prev);
+      closeMenu(); // Cierra el menú después del retraso
+    }, 50);
+  };
+
+  const handleSignOut = () => {
+    auth.signOut();
+    navigate("/");
+    closeMenu();
+  };
+
+  React.useEffect(() => {
+    if (isLoginFormOpen) {
+      closeMenu();
+    }
+  }, [isLoginFormOpen]);
+
   return (
-    <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end" >
+    <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>
         <Button
           variant="text"
           className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto hover:bg-gray-100"
         >
-          <Avatar
-            variant="circular"
-            size="sm"
-            alt="Foto perfil"
-            className="p-0.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"
-            src={user}
-          />
+          {user && user.photoURL ? (
+            <Avatar
+              variant="circular"
+              size="sm"
+              alt="Foto perfil"
+              className="p-0.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"
+              src={user.photoURL}
+            />
+          ) : (
+            <Avatar
+              variant="circular"
+              size="sm"
+              alt="Foto perfil"
+              className="p-0.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"
+              src={User}
+            />
+          )}
           <ChevronDownIcon
             strokeWidth={2.5}
             className={`h-3 w-3 transition-transform ${
@@ -81,34 +119,58 @@ function ProfileMenu() {
         </Button>
       </MenuHandler>
       <MenuList className="shadow-xl shadow-sky-400/10 z-20">
-        {profileMenuItems.map(({ label, icon }, key) => {
-          const isLastItem = key === profileMenuItems.length - 1;
-          return (
-            <MenuItem 
-              key={label}
-              onClick={closeMenu}
-              className={`flex items-center gap-2 rounded p-1 px-3 pr-12 text-slate-500 hover:text-slate-800 font-normal ${
-                isLastItem
-                  ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                  : "hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-100"
-              }`}
+        {user ? (
+          <>
+            {profileMenuItems.map(({ label, icon }, index) => (
+              <MenuItem
+                key={label}
+                className={`flex items-center gap-2 rounded p-1 px-3 pr-12 text-slate-500 hover:text-slate-800 font-normal hover:bg-gray-100`}
+              >
+                {React.createElement(icon, { className: `h-4 w-4 text-slate-500` })}
+                <Typography
+                  as="span"
+                  variant="small"
+                  className={`font-normal text-lg text-slate-500`}
+                >
+                  {label}
+                </Typography>
+              </MenuItem>
+            ))}
+            <MenuItem
+              onClick={handleSignOut}
+              className="flex items-center gap-2 rounded p-1 px-3 pr-12 text-slate-500 hover:text-slate-800 font-normal hover:bg-gray-100"
             >
-              {React.createElement(icon, {
-                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-                strokeWidth: 2,
-              })}
+              <PowerIcon className={`h-4 w-4 text-red-600 `} strokeWidth={2} />
               <Typography
                 as="span"
                 variant="small"
-                className="font-normal text-lg"
-                color={isLastItem ? "red" : "current"}
+                className="font-normal text-lg text-red-600"
               >
-                {label}
+                Cerrar Sesión
               </Typography>
             </MenuItem>
-          );
-        })}
+          </>
+        ) : (
+          // Elemento del menú para el usuario no autenticado
+          <MenuItem
+            onClick={() => {
+              closeMenu();
+              toggleLoginForm();
+            }}
+            className="flex items-center gap-2 rounded p-1 px-3 pr-12 text-slate-500 hover:text-slate-800 font-normal hover:bg-gray-100"
+          >
+            <RocketLaunchIcon className={`h-4 w-4 text-green-500`} strokeWidth={2} />
+            <Typography
+              as="span"
+              variant="small"
+              className="font-normal text-lg text-green-500"
+            >
+              Iniciar Sesión
+            </Typography>
+          </MenuItem>
+        )}
       </MenuList>
+      {isLoginFormOpen && <Login />}
     </Menu>
   );
 }
@@ -240,17 +302,28 @@ function NavList() {
  
 export default function ComplexNavbar() {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
- 
-  const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
- 
-  React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setIsNavOpen(false),
-    );
-  }, []);
+  const [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false);
+
+  const toggleIsNavOpen = () => {
+    setIsNavOpen((cur) => !cur);
+    closeMenuAndLoginForm();
+  };
+
+  const closeMenuAndLoginForm = () => {
+    setIsNavOpen(false);
+    setIsLoginFormOpen(false);
+  };
+
+  const handleToggleLoginForm = () => {
+    setTimeout(() => {
+      setIsLoginFormOpen((prev) => !prev);
+      closeMenu(); // Cierra el menú después del retraso
+    }, 50);
+    toggleLoginForm(); // Llama a la función pasada como prop
+  };
  
   return (
+    <>
     <Navbar className="mx-auto max-w-screen-xl p-2 lg:rounded-full lg:pl-6 mt-3 shadow-xl shadow-sky-400/10 sticky top-0 
     bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-2xl bg-opacity-80 border border-gray-100 z-10">
       <div className="relative mx-auto flex items-center text-slate-800">
@@ -270,16 +343,24 @@ export default function ComplexNavbar() {
           size="lg"
           color="blue-gray"
           variant="text"
-          onClick={toggleIsNavOpen}
+          onClick={() => {
+            toggleIsNavOpen();
+            closeMenuAndLoginForm(); // Cierra el formulario de inicio de sesión cuando se abre el menú
+          }}
           className="ml-auto mr-1 pt-1 lg:hidden hover:bg-gray-100 rounded-lg flex justify-center text-slate-500 h-9 w-9"
         >
           <Bars2Icon className="h-7 w-7 z-20"/>
         </IconButton>
-        <ProfileMenu />
+        <ProfileMenu
+          isLoginFormOpen={isLoginFormOpen}
+          toggleLoginForm={handleToggleLoginForm}
+        />
       </div>
       <Collapse open={isNavOpen} className="overflow-scroll z-20">
         <NavList/>
       </Collapse>
-    </Navbar>
+      {isLoginFormOpen && <Login handleToggleLogin={closeMenuAndLoginForm} />}
+    </Navbar>     
+    </>
   );
 }

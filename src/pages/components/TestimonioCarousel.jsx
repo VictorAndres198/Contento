@@ -1,5 +1,4 @@
 import React from "react";
-import User from "../img/user.svg"
 import "../../index.css"
 import Test1 from "../img/Test1.png"
 import Test2 from "../img/Test2.png"

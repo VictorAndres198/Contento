@@ -23,7 +23,7 @@ import imgF3 from './img/Flip3.png'
 export default function Home(){
     return(
         <section className="flex flex-col items-center">
-        <div className="grid md:grid-cols-2 bg-gradient-to-r from-blue-900 to-sky-700 rounded-3xl md:mx-auto m-7 max-w-screen-xl pt-10 w-11/12">
+        <div className="grid md:grid-cols-2 bg-gradient-to-r from-blue-900 to-sky-700 rounded-3xl md:mx-auto m-7 max-w-[1278px] pt-10 w-11/12">
         <div className="text-white lg:py-6 lg:px-4 lg:mt-7 lg:mb-7 mt-5">
             <div className="w-full h-full mx-auto text-left flex flex-col justify-center md:pl-12 pl-4">                
                 <div>
@@ -127,7 +127,7 @@ export default function Home(){
            />
         </div>  
 
-        <div className="grid md:grid-cols-2 bg-gradient-to-r from-blue-800 to-cyan-700 rounded-3xl md:mx-auto m-7 max-w-screen-xl w-11/12">
+        <div className="grid md:grid-cols-2 bg-gradient-to-r from-blue-800 to-cyan-700 rounded-3xl md:mx-auto m-7 max-w-[1278px] w-11/12">
         <div className="order-2 md:order-1 text-white lg:py-6 lg:px-4 lg:mt-7 lg:mb-7 mt-5">
             <div className="w-full h-full mx-auto text-left flex flex-col justify-center md:pl-12 pl-4">                
                 <p className="font-bold text-cyan-400 text-2xl pb-4">Soporte en línea</p>

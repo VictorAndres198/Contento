@@ -4,7 +4,7 @@ import ContentoLogo from "../img/ContentoLogoB.png"
 
 export default function Footer(){
     return(
-        <div className="text-white lg:max-w-screen-xl mx-auto w-full h-full rounded-tl-[120px] 
+        <div className="text-white lg:max-w-[1278px] mx-auto w-full h-full rounded-tl-[120px] 
         bg-gradient-to-r from-blue-900 to-cyan-950 flex flex-col">
             <div className="pt-12 gap-5 md:gap-0 flex flex-col md:flex-row justify-center mx-16 py-3">
 

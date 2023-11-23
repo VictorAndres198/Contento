@@ -11,6 +11,8 @@ export default function DoctorSelector() {
   return (
     <div className="relative flex flex-row h-full w-full p-0 m-0 rounded-md">
       <select
+        id="selector_doctor_cita"
+        name="selector_doctor_cita"
         value={selectedDoctor}
         onChange={handleDoctorChange}
         className="pl-2 w-full h-8 block rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-offset-1 ring-gray-300 text-sm sm:leading-6 p-0 m-0"

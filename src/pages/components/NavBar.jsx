@@ -56,7 +56,7 @@ const profileMenuItems = [
   },
 ];
  
-function ProfileMenu() {
+function ProfileMenu({ setIsNavOpen }) {
 
   const [user] = useAuthState(auth);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -65,6 +65,18 @@ function ProfileMenu() {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    setIsNavOpen(false); 
+  };
+  
+  const toggleIsNavOpen = () => {
+    setIsMenuOpen(false);
+    setIsNavOpen(false);
+    setIsLoginFormOpen(false);
+  };
+
+  const closeMenuAndLoginForm = () => {
+    setIsNavOpen(false);
+    setIsLoginFormOpen(false);
   };
 
   const toggleLoginForm = () => {
@@ -305,8 +317,8 @@ export default function ComplexNavbar() {
   const [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false);
 
   const toggleIsNavOpen = () => {
-    setIsNavOpen((cur) => !cur);
-    closeMenuAndLoginForm();
+    setIsNavOpen((prev) => !prev);
+    setIsLoginFormOpen(false); 
   };
 
   const closeMenuAndLoginForm = () => {
@@ -333,7 +345,7 @@ export default function ComplexNavbar() {
           className="mr-4 ml-2 cursor-pointer font-medium text-xl z-20"
         >
           <Link to="/">
-          <img className="h-10 w-30" src={Contento}/>
+          <img className="h-10 w-30" src={Contento} alt="Logo"/>
           </Link>
         </Typography>
         <div className="absolute top-2/4 left-2/4 hidden -translate-x-2/4 -translate-y-2/4 lg:block z-20">
@@ -343,17 +355,15 @@ export default function ComplexNavbar() {
           size="lg"
           color="blue-gray"
           variant="text"
-          onClick={() => {
-            toggleIsNavOpen();
-            closeMenuAndLoginForm(); // Cierra el formulario de inicio de sesión cuando se abre el menú
-          }}
+          onClick={toggleIsNavOpen} // Fix: Remove the extra onClick property
           className="ml-auto mr-1 pt-1 lg:hidden hover:bg-gray-100 rounded-lg flex justify-center text-slate-500 h-9 w-9"
         >
           <Bars2Icon className="h-7 w-7 z-20"/>
         </IconButton>
-        <ProfileMenu
-          isLoginFormOpen={isLoginFormOpen}
-          toggleLoginForm={handleToggleLoginForm}
+        <ProfileMenu 
+          setIsNavOpen={setIsNavOpen} 
+          isLoginFormOpen={isLoginFormOpen} 
+          toggleLoginForm={handleToggleLoginForm} 
         />
       </div>
       <Collapse open={isNavOpen} className="overflow-scroll z-20">

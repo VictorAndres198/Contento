@@ -3,13 +3,13 @@ import {ShoppingCartIcon,TrashIcon,MinusIcon,PlusIcon} from "@heroicons/react/24
 import "../index.css"
 import {db} from './components/firebase'; // Importa el objeto db de tu archivo de configuración de Firebase
 import { collection, getDocs } from 'firebase/firestore'; // Importa los métodos necesarios de Firebase
-
+import { Link } from "react-router-dom";
 
     export default function Productos() {
 
       const [showCarrito, setShowCarrito] = useState(false);
       const [showCarritoAnimacion, setShowCarritoAnimacion] = useState(false);
-      const [carrito, setCarrito] = useState([]); // Estado para mantener los productos en el carrito
+      const [carrito, setCarrito] = useState([]);
       const [cantidadProductos, setCantidadProductos] = useState(0); // Estado para la cantidad de productos en el carrito
     
       const toggleCarrito = () => {
@@ -20,27 +20,35 @@ import { collection, getDocs } from 'firebase/firestore'; // Importa los método
       };
     
       const agregarAlCarrito = (producto) => {
-        // Verifica si el producto ya está en el carrito por su nombre
         const productoExistente = carrito.find((p) => p.nombre === producto.nombre);
       
-        // Si no está en el carrito, agrégalo
         if (!productoExistente) {
-          setCarrito([...carrito, { ...producto, cantidad: 1 }]);
-          setCantidadProductos(cantidadProductos + 1);
+          const nuevoCarrito = [...carrito, { ...producto, cantidad: 1 }];
+          setCarrito(nuevoCarrito);
+          setCantidadProductos(nuevoCarrito.length);
+      
+          // Guardar el carrito en localStorage
+          localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
         }
       };
-    
+
       const eliminarDelCarrito = (index) => {
         const nuevoCarrito = [...carrito];
         nuevoCarrito.splice(index, 1);
         setCarrito(nuevoCarrito);
-        setCantidadProductos(cantidadProductos - 1);
+        setCantidadProductos(nuevoCarrito.length);
+      
+        // Guardar el carrito en localStorage
+        localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
       };
     
       const modificarCantidad = (index, cantidad) => {
         const nuevoCarrito = [...carrito];
         nuevoCarrito[index].cantidad = cantidad;
         setCarrito(nuevoCarrito);
+      
+        // Guardar el carrito en localStorage
+        localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
       };
     
       const calcularTotal = () => {
@@ -54,6 +62,11 @@ import { collection, getDocs } from 'firebase/firestore'; // Importa los método
       const [productos, setProductos] = useState([]);
     
       useEffect(() => {
+        // Obtener el carrito desde localStorage al cargar el componente
+        const carritoGuardado = JSON.parse(localStorage.getItem('carrito')) || [];
+        setCarrito(carritoGuardado);
+        setCantidadProductos(carritoGuardado.length);
+      
         const obtenerProductos = async () => {
           try {
             const querySnapshot = await getDocs(collection(db, 'Productos'));
@@ -63,13 +76,15 @@ import { collection, getDocs } from 'firebase/firestore'; // Importa los método
             console.error('Error al obtener los productos:', error);
           }
         };
-    
+      
         obtenerProductos();
       }, []);
 
       const isEnElCarrito = (producto) => {
         return carrito.some((p) => p.nombre === producto.nombre);
       };
+
+      const hayProductosEnCarrito = carrito.length > 0;
 
     return(
         <section className="max-w-screen-xl md:mx-auto md:h-fit">
@@ -174,27 +189,42 @@ import { collection, getDocs } from 'firebase/firestore'; // Importa los método
                 
 
 
-                <p className={`fixed ml-10 mb-28 bottom-0 text-lg font-semibold text-slate-700 ${
+                <p  style={{ 
+                      visibility: hayProductosEnCarrito ? 'visible' : 'hidden',
+                      transition: 'visibility 0s, opacity 0.5s linear'
+                    }}
+                    className={`fixed ml-10 mb-28 bottom-0 text-lg font-semibold text-slate-700 ${
                     showCarrito ? "carrito-container-entrada-t" : "carrito-container-salida-c -translate-x-80"
-                  }`}>
+                    }`}>
                   SubTotal 
                 </p>
                 
-                <label className={`fixed ml-[245px] mb-28 bottom-0 text-lg font-semibold text-slate-700 ${
-                    showCarrito ? "carrito-container-entrada-t2" : "carrito-container-salida-c -translate-x-80"
-                  }`}>
-                  s/ {calcularTotal()}
+                <label style={{ 
+                          visibility: hayProductosEnCarrito ? 'visible' : 'hidden',
+                          transition: 'visibility 0s, opacity 0.5s linear'
+                        }}                  
+                        className={`fixed ml-[245px] mb-28 bottom-0 text-lg font-semibold text-slate-700 ${
+                          showCarrito ? "carrito-container-entrada-t2" : "carrito-container-salida-c -translate-x-80"
+                        }`}>
+                        s/ {calcularTotal()}
                 </label>
                 
                 <div className={`fixed ml-[69px] bottom-0 ${
                     showCarrito ? "carrito-container-entrada-b" : "carrito-container-salida-c -translate-x-80"
-                  }`}>
+                  }`}>  
+
+                <Link to="/Carrito">            
                 <button 
-                className="bg-gradient-to-l from-green-500 to-lime-500 rounded-3xl p-3 font-semibold px-16 text-white 
-                hover:bg-gradient-to-l hover:from-green-500 hover:to-lime-500 hover:shadow-lg hover:shadow-lime-400/50 hover:scale-110 
-                transition ease-in-out duration-500 hover:-translate-y-1 delay-150 mb-9">
+                  className={`bg-gradient-to-l from-green-500 to-lime-500 rounded-3xl p-3 font-semibold px-16 text-white 
+                  hover:bg-gradient-to-l hover:from-green-500 hover:to-lime-500 hover:shadow-lg hover:shadow-lime-400/50 hover:scale-110 
+                  transition ease-in-out duration-500 hover:-translate-y-1 delay-150 mb-9`}
+                  style={{ 
+                    visibility: hayProductosEnCarrito ? 'visible' : 'hidden'
+                  }}
+                >
                 Comprar Ahora
                 </button>
+                </Link>
                 </div>
                 {/*Solución para que no se vea el carrito ocultable*/}
                 <div className="-mt-4 bg-[#F4FFFB] w-[380px] h-screen fixed -translate-x-full"></div>

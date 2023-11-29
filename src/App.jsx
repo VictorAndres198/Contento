@@ -9,6 +9,7 @@ import Productos from './pages/Productos'
 import PreguntaFrecuente from './pages/PreguntaFrecuente'
 import Contactanos from './pages/Contactanos'
 import Nosotros from './pages/Nosotros'
+import Carrito from './pages/Carrito'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path='Nosotros' element={<Nosotros/>}/>
         <Route path='Login' element={<Login/>}/>
         <Route path='Registrate' element={<Registrate/>}/> 
+        <Route path='Carrito' element={<Carrito/>}/> 
       </Routes>
       <Footer/>
     </div>

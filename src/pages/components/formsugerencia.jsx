@@ -52,10 +52,10 @@ export default function FormSugerencia(){
       }
 
       const reclamoData = {
-        celular: document.getElementById("numero_celular").value,
-        correo: document.getElementById("email").value,
+        celular: document.getElementById("numero_celular_s").value,
+        correo: document.getElementById("emails").value,
         detalle: message,
-        nombre: document.getElementById("nombre").value,
+        nombre: document.getElementById("nombres").value,
         sugerencia: imageURL || "Sin archivo adjunto",
       };
 
@@ -81,8 +81,8 @@ export default function FormSugerencia(){
                     
         <div className="w-4/5 mx-auto">
           <input
-            id="nombrereclamo"
-            name="nombrereclamo"
+            id="nombres"
+            name="nombres"
             type="text"
             autoComplete="off"
             required
@@ -93,8 +93,8 @@ export default function FormSugerencia(){
 
         <div className="w-4/5 mx-auto">
           <input
-            id="emailreclamo"
-            name="emailreclamo"
+            id="emails"
+            name="emails"
             type="email"
             autoComplete="email"
             required
@@ -105,8 +105,8 @@ export default function FormSugerencia(){
 
         <div className="w-4/5 mx-auto">
           <input
-            id="numero_celular_reclamo"
-            name="numero_celular_reclamo"
+            id="numero_celular_s"
+            name="numero_celular_s"
             type="tel"
             autoComplete="off"
             required
@@ -118,8 +118,8 @@ export default function FormSugerencia(){
         <div className="w-4/5 mx-auto">
         <p className="text-slate-800 pb-1 pl-1">Adjuntar Imagenes (Opcional)</p>
         <input
-          id="imagenreclamo"
-          name="imagenreclamo"
+          id="imagens"
+          name="imagens"
           type="file"
           accept="image/*" 
           onChange={handleFileChange} 
@@ -132,7 +132,7 @@ export default function FormSugerencia(){
      
 
         <div className="w-4/5 mx-auto">
-          <textarea id="mensajereclamo" name="mensaje" rows="4" type="text" autoComplete="off"  
+          <textarea id="mensajes" name="mensaje" rows="4" type="text" autoComplete="off"  
           placeholder="Ingresa tu sugerencia..."
           className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300
           focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

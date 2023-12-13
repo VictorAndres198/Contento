@@ -90,8 +90,8 @@ export default function FormReclamo(){
                     
         <div className="w-4/5 mx-auto">
           <input
-            id="nombrereclamo"
-            name="nombrereclamo"
+            id="nombre"
+            name="nombre"
             type="text"
             autoComplete="off"
             required
@@ -102,8 +102,8 @@ export default function FormReclamo(){
 
         <div className="w-4/5 mx-auto">
           <input
-            id="emailreclamo"
-            name="emailreclamo"
+            id="email"
+            name="email"
             type="email"
             autoComplete="email"
             required
@@ -114,8 +114,8 @@ export default function FormReclamo(){
 
         <div className="w-4/5 mx-auto">
           <input
-            id="numero_celular_reclamo"
-            name="numero_celular_reclamo"
+            id="numero_celular"
+            name="numero_celular"
             type="tel"
             autoComplete="off"
             required
@@ -127,8 +127,8 @@ export default function FormReclamo(){
         <div className="w-4/5 mx-auto">
         <p className="text-slate-800 pb-1 pl-1">Adjuntar Pruebas (Opcional)</p>
         <input
-          id="imagenreclamo"
-          name="imagenreclamo"
+          id="imagen"
+          name="imagen"
           type="file"
           accept="image/*" 
           onChange={handleFileChange} 
@@ -141,8 +141,8 @@ export default function FormReclamo(){
         
         <div className="w-4/5 mx-auto">
         <select
-          id="motivoreclamo"
-          name="motivoreclamo"
+          id="motivo"
+          name="motivo"
           required
           value={selectedOption}
           onChange={handleOptionChange}
